@@ -13,3 +13,10 @@ interface NavigationDestination {
 object Main : NavigationDestination {
     override val route = "main"
 }
+
+/**
+ * 設定画面
+ */
+object Settings : NavigationDestination {
+    override val route = "settings"
+}

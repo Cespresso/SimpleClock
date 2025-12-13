@@ -1,10 +1,17 @@
 package com.example.apptemplate2025winter.ui.screens.main
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 
 /**
@@ -20,6 +27,24 @@ class MainViewModel @Inject constructor(
 
     private val _uiState = MutableStateFlow(MainUiState())
     val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()
+
+    private val timeFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+    private val dateFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+
+    init {
+        viewModelScope.launch {
+            while (true) {
+                val currentTime = Date()
+                _uiState.update {
+                    it.copy(
+                        time = timeFormat.format(currentTime),
+                        date = dateFormat.format(currentTime)
+                    )
+                }
+                delay(1000)
+            }
+        }
+    }
 
     // 画面のイベントハンドラをここに追加します
     // 例:

@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.apptemplate2025winter.ui.screens.main.MainScreen
+import com.example.apptemplate2025winter.ui.screens.settings.SettingsScreen
 
 /**
  * アプリ全体のナビゲーション設定
@@ -24,7 +25,15 @@ fun AppNavigation(
     ) {
         // メイン画面
         composable(route = Main.route) {
-            MainScreen()
+            MainScreen(
+                onNavigateToSettings = { navController.navigate(Settings.route) }
+            )
+        }
+        // 設定画面
+        composable(route = Settings.route) {
+            SettingsScreen(
+                onNavigateUp = { navController.navigateUp() }
+            )
         }
     }
 }
