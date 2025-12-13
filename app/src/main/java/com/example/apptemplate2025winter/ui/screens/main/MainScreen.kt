@@ -51,7 +51,7 @@ fun MainScreenContent(
     onNavigateToSettings: () -> Unit
 ) {
     Scaffold(
-        containerColor = MaterialTheme.colorScheme.background,
+        containerColor = uiState.backgroundColor,
     ) { paddingValues ->
         Box(
             modifier = Modifier
@@ -67,7 +67,7 @@ fun MainScreenContent(
                 Icon(
                     imageVector = Icons.Default.Settings,
                     contentDescription = "Settings",
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    tint = uiState.textColor
                 )
             }
             Column(
@@ -79,21 +79,23 @@ fun MainScreenContent(
                 Text(
                     text = uiState.time,
                     style = MaterialTheme.typography.displayLarge.copy(
-                        fontSize = 80.sp,
-                        color = MaterialTheme.colorScheme.primary,
-                    )
-                )
-                Text(
-                    text = uiState.dayOfWeek,
-                    style = MaterialTheme.typography.headlineMedium.copy(
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        letterSpacing = 2.sp
+                        fontSize = uiState.timeSize.sp,
+                        color = uiState.textColor,
                     )
                 )
                 Text(
                     text = uiState.date,
                     style = MaterialTheme.typography.bodyLarge.copy(
-                        color = MaterialTheme.colorScheme.outline
+                        fontSize = uiState.dateSize.sp,
+                        color = uiState.textColor
+                    )
+                )
+                Text(
+                    text = uiState.dayOfWeek,
+                    style = MaterialTheme.typography.headlineMedium.copy(
+                        fontSize = uiState.dateSize.sp,
+                        color = uiState.textColor,
+                        letterSpacing = 2.sp
                     )
                 )
                 Spacer(modifier = Modifier.weight(0.2f))
