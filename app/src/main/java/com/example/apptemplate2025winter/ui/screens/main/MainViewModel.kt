@@ -29,7 +29,8 @@ class MainViewModel @Inject constructor(
     val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()
 
     private val timeFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
-    private val dateFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+    private val dayOfWeekFormat = SimpleDateFormat("EEEE", Locale.getDefault())
+    private val dateFormat = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
 
     init {
         viewModelScope.launch {
@@ -38,6 +39,7 @@ class MainViewModel @Inject constructor(
                 _uiState.update {
                     it.copy(
                         time = timeFormat.format(currentTime),
+                        dayOfWeek = dayOfWeekFormat.format(currentTime),
                         date = dateFormat.format(currentTime)
                     )
                 }
