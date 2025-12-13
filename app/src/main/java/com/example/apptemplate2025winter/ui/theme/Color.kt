@@ -1,4 +1,7 @@
 package com.example.apptemplate2025winter.ui.theme
 
-// 色定義が必要な場合に定義する
-// val Purple40 = Color(0xFF6650a4)
+import androidx.compose.ui.graphics.Color
+
+val Primary = Color(0xFF36E27B)
+val BackgroundDark = Color(0xFF112117)
+val SurfaceDark = Color(0xFF1B3224)
