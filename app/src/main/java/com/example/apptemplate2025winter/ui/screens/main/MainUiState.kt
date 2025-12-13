@@ -1,6 +1,7 @@
 package com.example.apptemplate2025winter.ui.screens.main
 data class MainUiState(
     val time: String = "",
+    val dayOfWeek: String = "",
     val date: String = "",
     val isLoading: Boolean = false,
     val error: String? = null
