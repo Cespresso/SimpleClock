@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AppTemplate2025Winter"
+rootProject.name = "SimpleClock"
 include(":app")
